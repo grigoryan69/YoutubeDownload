@@ -3,14 +3,13 @@ from pytube import YouTube
 import eel
 from pathlib import Path
 
+downloads_path = str(Path.home() / "Downloads")
 eel.init('web')
 
 
 @eel.expose
 def recv_data(search):
     print(search)
-    downloads_path = str(Path.home() / "Downloads")
-
     link = search
 
     yt = YouTube(link)
