@@ -10,7 +10,7 @@ if __name__ == '__main__':
     linker.init('web')
     
     @linker.expose
-    def content(search):
+    def downloader(search):
         try:
             playlist = Playlist(search)
             print(f'Downloading playlist: {playlist.title}')
