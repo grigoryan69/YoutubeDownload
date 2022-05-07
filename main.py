@@ -8,9 +8,9 @@ downloads_dir = str(os.path.join(Path.home(), "Downloads/Youtube Download"))
 
 if __name__ == '__main__':
     linker.init('web')
-    
+
     @linker.expose
-    def downloader(search):
+    def sendtube(search) -> str:
         try:
             playlist = Playlist(search)
             print(f'Downloading playlist: {playlist.title}')
@@ -19,15 +19,16 @@ if __name__ == '__main__':
                 start.download(f'{downloads_dir}/{playlist.title}')
 
             print("Download completed!")
-        
+
         except:
             video = YouTube(search)
             print("Downloading Video:", video.title)
             # Getting the highest resolution possible
             start = video.streams.get_highest_resolution()
             start.download(downloads_dir)
-            
+
             print("Download completed!")
-            
+
+        return search
 
     linker.start('index.html', size=(440, 300))
